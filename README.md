@@ -160,6 +160,16 @@ As of August 2026, non-compliant High-Risk AI systems may face fines up to **€
 
 ---
 
+## 👥 Contributors
+
+| Role | Contributor |
+|---|---|
+| Product & Architecture | [@RichradsY](https://github.com/RichradsY) |
+| AI Engineering (Taint Engine, AST Analysis) | [Claude](https://claude.ai) (Anthropic) |
+| AI Engineering (Rules & Adversarial Cases) | [Gemini](https://gemini.google.com) (Google) |
+
+---
+
 ## 📄 License
 
 Apache License 2.0 — see [LICENSE](LICENSE) for details.
