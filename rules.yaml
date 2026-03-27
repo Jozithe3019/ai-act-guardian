@@ -1,0 +1,80 @@
+
+# EU AI Act Consolidated Rules v5.0 (Global Compliance)
+# March 2026 Edition
+
+general_rules:
+  PROHIBITED:
+    - id: "ART_5_1_A_SUBLIMINAL"
+      pattern: "subliminal_technique|manipulate_behavior"
+      msg: "Art 5.1.a: Subliminal or manipulative techniques."
+    - id: "ART_5_1_B_VULNERABLE"
+      pattern: "exploit_vulnerability|disability_target"
+      msg: "Art 5.1.b: Exploitation of vulnerable groups."
+    - id: "ART_5_1_C_BIOMETRIC"
+      pattern: "biometric_identification|face_recognition"
+      msg: "Art 5.1.c: Biometric surveillance detected."
+    - id: "ART_5_1_D_SOCIAL_SCORING"
+      pattern: "social_scoring|user_trust_rating"
+      msg: "Art 5.1.d: Prohibited social scoring systems."
+
+  HIGH_RISK_DOMAINS:
+    - id: "ANNEX_III_INFRASTRUCTURE"
+      pattern: "critical_infrastructure|traffic_management"
+      msg: "Annex III.2: Critical infrastructure."
+    - id: "ANNEX_III_EDUCATION"
+      pattern: "proctoring|exam_grading"
+      msg: "Annex III.3: Education/Vocational training."
+    - id: "ANNEX_III_HR"
+      pattern: "recruitment|hiring|cv_screening"
+      msg: "Annex III.4: HR/Employment."
+    - id: "ANNEX_III_FINANCE"
+      pattern: "credit_scoring|loan_approval"
+      msg: "Annex III.5: Finance/Insurance."
+    - id: "ANNEX_III_LAW_ENFORCEMENT"
+      pattern: "polygraph|recidivism_predict|evidence_eval"
+      msg: "Annex III.6: Law enforcement applications (High-Risk)."
+    - id: "ANNEX_III_MIGRATION"
+      pattern: "visa_application_eval|border_control_ai"
+      msg: "Annex III.7: Migration/Asylum/Border control."
+    - id: "ANNEX_III_DEMOCRACY"
+      pattern: "election_influence|voter_behavior_predict"
+      msg: "Annex III.8: Administration of justice and democratic processes."
+
+  GPAI:
+    - id: "ART_51_GPAI_SYSTEMIC"
+      pattern: "total_flops|training_compute_threshold"
+      msg: "Art 51: GPAI with systemic risk."
+
+  DOCUMENTATION:
+    - id: "ART_11_TECH_DOC"
+      required_file: "model_card.md|system_card.md"
+      msg: "Art 11: Missing Technical Documentation."
+    - id: "ART_9_RISK_MGMT"
+      required_file: "risk_registry.json|impact_assessment.md"
+      msg: "Art 9: Missing Risk Management System doc."
+    - id: "ART_10_BIAS_DOC"
+      required_file: "dataset_info.json|metadata.json"
+      trigger_pattern: "ethnicity|race|gender|age_group"
+      msg: "Art 10: Missing Bias/Balance metrics for demographic data."
+    - id: "ART_13_USER_INSTRUCTIONS"
+      required_file: "user_manual.md|instructions.pdf|usage_guide.txt"
+      msg: "Art 13: Missing mandatory Instructions for Use for users."
+
+medical_rules:
+  HIGH_RISK:
+    - id: "MDR_OVERLAP_DIAGNOSTIC"
+      pattern: "diagnostic|triage|clinical_decision"
+      msg: "Annex II/III: Medical Device AI."
+  
+  OVERSIGHT:
+    - id: "ART_14_DOCTOR_APPROVAL"
+      pattern: "confirm_by_physician|doctor_approval"
+      required: True
+      target_function: "diagnostic|triage|analyze_patient"
+      msg: "Art 14: Missing mandatory HITL (Human-in-the-loop)."
+
+  GDPR_EXTENSION:
+    - id: "GDPR_PII_LEAK"
+      sensitive_vars: ["patient_name", "ssn", "birth_date", "medical_record"]
+      cleanup_funcs: ["anonymize", "mask", "pseudonymize", "encrypt"]
+      msg: "GDPR: Unmasked PII leak detected."
